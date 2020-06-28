@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark"
+            tools:context=".addbmi.AddBmiFragment">
+
+            <!-- Height -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/add_bmi_card_margin"
+                android:padding="@dimen/add_bmi_card_padding"
+                android:elevation="@dimen/add_bmi_card_elevation"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/add_bmi_card_elevation"
+                app:layout_constraintBottom_toTopOf="@+id/mcv_weight"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/add_bmi_card_padding">
+
+                    <TextView
+                        android:id="@+id/tv_title_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/add_bmi_card_title_margin"
+                        android:text="@string/height"
+                        android:textColor="@color/light_grey"
+                        android:textSize="@dimen/add_bmi_card_title_textsize"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/et_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/add_bmi_card_title_margin"
+                        android:hint="@string/_0"
+                        android:textColor="@color/white"
+                        android:inputType="numberDecimal"
+                        android:textColorHint="@color/light_grey"
+                        android:textSize="@dimen/add_bmi_card_value_textsize"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_title_height" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/add_bmi_card_unit_margin"
+                        android:layout_marginBottom="@dimen/add_bmi_card_unit_margin"
+                        android:text="@string/cm"
+                        android:textColor="@color/light_grey"
+                        android:textSize="@dimen/add_bmi_card_unit_textsize"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_height"
+                        app:layout_constraintLeft_toRightOf="@+id/et_height" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <!-- Weight -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/add_bmi_card_margin"
+                android:elevation="@dimen/add_bmi_card_elevation"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/add_bmi_card_elevation"
+                app:layout_constraintBottom_toTopOf="@+id/btn_calculateBmi"
+                app:layout_constraintTop_toBottomOf="@+id/mcv_height">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/add_bmi_card_padding">
+
+                    <TextView
+                        android:id="@+id/tv_title_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/add_bmi_card_title_margin"
+                        android:text="@string/weight"
+                        android:textColor="@color/light_grey"
+                        android:textSize="@dimen/add_bmi_card_title_textsize"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/et_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/add_bmi_card_title_margin"
+                        android:hint="@string/_0"
+                        android:textColor="@color/white"
+                        android:inputType="numberDecimal"
+                        android:textColorHint="@color/light_grey"
+                        android:textSize="@dimen/add_bmi_card_value_textsize"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_title_weight" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/add_bmi_card_unit_margin"
+                        android:layout_marginBottom="@dimen/add_bmi_card_unit_margin"
+                        android:text="@string/kg"
+                        android:textColor="@color/light_grey"
+                        android:textSize="@dimen/add_bmi_card_unit_textsize"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_weight"
+                        app:layout_constraintLeft_toRightOf="@+id/et_weight" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/btn_calculateBmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calculate_your_bmi"
+                android:layout_margin="@dimen/add_bmi_card_margin"
+                android:padding="@dimen/add_bmi_card_margin"
+                android:backgroundTint="@color/colorAccent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/add_bmi_card_title_textsize"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mcv_weight"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>
