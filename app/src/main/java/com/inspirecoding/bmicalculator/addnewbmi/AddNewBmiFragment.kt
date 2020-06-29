@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.databinding.AddNewBmiFragmentBinding
 
@@ -24,5 +26,18 @@ class AddNewBmiFragment : Fragment()
             layoutInflater, container, false
         )
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?)
+    {
+        super.onActivityCreated(savedInstanceState)
+        setupNavigation()
+    }
+    private fun setupNavigation()
+    {
+        binding.btnCalculateBmi.setOnClickListener {
+            val action = AddNewBmiFragmentDirections.actionAddNewBmiFragmentToResultFragment()
+            findNavController().navigate(action)
+        }
     }
 }

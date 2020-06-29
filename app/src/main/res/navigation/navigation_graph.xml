@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.inspirecoding.bmicalculator.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_bmisFragment"
+            app:destination="@id/bmisFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/bmisFragment"
+        android:name="com.inspirecoding.bmicalculator.bmis.BmisFragment"
+        android:label="@string/your_bmis" >
+        <action
+            android:id="@+id/action_bmisFragment_to_addNewBmiFragment"
+            app:destination="@id/addNewBmiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewBmiFragment"
+        android:name="com.inspirecoding.bmicalculator.addnewbmi.AddNewBmiFragment"
+        android:label="@string/add_bmi" >
+        <action
+            android:id="@+id/action_addNewBmiFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.inspirecoding.bmicalculator.result.ResultFragment"
+        android:label="@string/your_result" >
+        <argument
+            android:name="bmi"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.inspirecoding.bmicalculator.model.BMI"/>
+        <action
+            android:id="@+id/action_resultFragment_to_bmisFragment"
+            app:destination="@id/bmisFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_addNewBmiFragment"
+            app:destination="@id/addNewBmiFragment" />
+    </fragment>
+</navigation>
