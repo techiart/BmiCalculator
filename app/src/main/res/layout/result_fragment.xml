@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="com.inspirecoding.bmicalculator.result.ResultViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,6 +49,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/add_bmi_card_value_textsize_large"
                     android:textStyle="bold"
+                    android:text="@{@string/calculated_bmi(viewmodel.resultCalculatedBmi)}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_evaluation"

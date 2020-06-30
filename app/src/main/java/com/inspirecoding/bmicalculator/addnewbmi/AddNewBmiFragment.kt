@@ -1,6 +1,5 @@
 package com.inspirecoding.bmicalculator.addnewbmi
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.inspirecoding.bmicalculator.EventObserver
 import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.databinding.AddNewBmiFragmentBinding
+import com.inspirecoding.bmicalculator.utils.setupSnackbar
 
 class AddNewBmiFragment : Fragment()
 {
@@ -25,19 +26,27 @@ class AddNewBmiFragment : Fragment()
         binding = AddNewBmiFragmentBinding.inflate(
             layoutInflater, container, false
         )
+        binding.viewmodel = viewModel
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
+        setupSnackbar()
         setupNavigation()
+    }
+
+    private fun setupSnackbar()
+    {
+        view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
     }
     private fun setupNavigation()
     {
-        binding.btnCalculateBmi.setOnClickListener {
-            val action = AddNewBmiFragmentDirections.actionAddNewBmiFragmentToResultFragment()
+        /** User EventObserver to do not run again the navigation **/
+        viewModel.calculateBmiEvent.observe(viewLifecycleOwner, EventObserver {
+            val action = AddNewBmiFragmentDirections.actionAddNewBmiFragmentToResultFragment(viewModel.bmi)
             findNavController().navigate(action)
-        }
+        })
     }
 }

@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="com.inspirecoding.bmicalculator.addnewbmi.AddNewBmiViewModel" />
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,8 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/add_bmi_card_margin"
-                android:padding="@dimen/add_bmi_card_padding"
                 android:elevation="@dimen/add_bmi_card_elevation"
+                android:padding="@dimen/add_bmi_card_padding"
                 app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="@dimen/add_bmi_card_elevation"
                 app:layout_constraintBottom_toTopOf="@+id/mcv_weight"
@@ -54,8 +57,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/add_bmi_card_title_margin"
                         android:hint="@string/_0"
-                        android:textColor="@color/white"
+                        android:text="@={viewmodel.height}"
                         android:inputType="numberDecimal"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/light_grey"
                         android:textSize="@dimen/add_bmi_card_value_textsize"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,8 +116,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/add_bmi_card_title_margin"
                         android:hint="@string/_0"
-                        android:textColor="@color/white"
+                        android:text="@={viewmodel.weight}"
                         android:inputType="numberDecimal"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/light_grey"
                         android:textSize="@dimen/add_bmi_card_value_textsize"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,18 +142,19 @@
 
             <Button
                 android:id="@+id/btn_calculateBmi"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/calculate_your_bmi"
                 android:layout_margin="@dimen/add_bmi_card_margin"
-                android:padding="@dimen/add_bmi_card_margin"
                 android:backgroundTint="@color/colorAccent"
+                android:padding="@dimen/add_bmi_card_margin"
+                android:text="@string/calculate_your_bmi"
                 android:textColor="@color/white"
                 android:textSize="@dimen/add_bmi_card_title_textsize"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:onClick="@{() -> viewmodel.calculateBmi()}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mcv_weight"/>
+                app:layout_constraintTop_toBottomOf="@+id/mcv_weight" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
