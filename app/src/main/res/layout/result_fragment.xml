@@ -127,6 +127,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/add_bmi_card_title_textsize"
             style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:onClick="@{() -> viewmodel.saveBmi()}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mcv_result"

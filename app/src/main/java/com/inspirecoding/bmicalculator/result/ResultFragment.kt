@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.inspirecoding.bmicalculator.EventObserver
 import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.databinding.ResultFragmentBinding
 
@@ -52,10 +53,10 @@ class ResultFragment : Fragment()
     }
     private fun setNavigateToBmisFragment()
     {
-        binding.btnSaveBmi.setOnClickListener {
+        viewModel.bmiSaveEvent.observe(viewLifecycleOwner, EventObserver {
             val action = ResultFragmentDirections
                 .actionResultFragmentToBmisFragment()
             findNavController().navigate(action)
-        }
+        })
     }
 }
