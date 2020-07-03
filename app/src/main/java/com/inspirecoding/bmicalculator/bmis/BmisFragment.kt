@@ -32,6 +32,7 @@ class BmisFragment : Fragment()
         binding = BmisFragmentBinding.inflate(
             inflater, container, false
         )
+        binding.viewmodel = viewModel
         return binding.root
     }
 
@@ -39,11 +40,23 @@ class BmisFragment : Fragment()
     {
         super.onActivityCreated(savedInstanceState)
 
-        onFabClick()
+        binding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel.items.observe(viewLifecycleOwner, Observer { _listOfBmis ->
-            Log.d("list of BMIs", "$_listOfBmis")
-        })
+        onFabClick()
+        setupListAdapter()
+    }
+
+    private fun setupListAdapter()
+    {
+        val viewmodel = binding.viewmodel
+        if(viewmodel != null)
+        {
+            binding.recyclerView.adapter = BmisListAdapter(viewmodel)
+        }
+        else
+        {
+            Log.w("No init ViewModel", "ViewModel not initialized when attempting to set up adapter.")
+        }
     }
 
     private fun onFabClick()
