@@ -1,24 +1,22 @@
 package com.inspirecoding.bmicalculator.result
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.inspirecoding.bmicalculator.EventObserver
-import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.databinding.ResultFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ResultFragment : Fragment()
 {
     private lateinit var binding: ResultFragmentBinding
     private val safeArgs: ResultFragmentArgs by navArgs()
-    private val viewModel by viewModels<ResultViewModel>()
+    private val viewModel: ResultViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

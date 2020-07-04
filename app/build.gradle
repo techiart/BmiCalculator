@@ -74,4 +74,7 @@ dependencies {
 
     /** Material design **/
     implementation "com.google.android.material:material:$material_desing_version"
+
+    /** Koin **/
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 }

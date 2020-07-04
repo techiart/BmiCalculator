@@ -1,21 +1,15 @@
 package com.inspirecoding.bmicalculator.result
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.inspirecoding.bmicalculator.Event
-import com.inspirecoding.bmicalculator.data.BmiDatabase
 import com.inspirecoding.bmicalculator.data.BmiRepository
+import com.inspirecoding.bmicalculator.data.BmiRepositoryImpl
 import com.inspirecoding.bmicalculator.model.BMI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ResultViewModel(application: Application) : AndroidViewModel(application)
+class ResultViewModel(private val bmiRepository: BmiRepository) : ViewModel()
 {
-    private val bmiRepository: BmiRepository
-
     private val _resultBmi = MutableLiveData<BMI>()
     val resultBmi: LiveData<BMI> = _resultBmi
     private val _resultCalculatedBmi = MutableLiveData<Float>()
@@ -23,12 +17,6 @@ class ResultViewModel(application: Application) : AndroidViewModel(application)
 
     private val _bmiSaveEvent = MutableLiveData<Event<Unit>>()
     val bmiSaveEvent: LiveData<Event<Unit>> = _bmiSaveEvent
-
-    init
-    {
-        val bmiDao = BmiDatabase.getDatabase(application.applicationContext).bmiDao()
-        bmiRepository = BmiRepository(bmiDao)
-    }
 
 
     fun getBmi(bmi: BMI?)
@@ -41,7 +29,6 @@ class ResultViewModel(application: Application) : AndroidViewModel(application)
     {
         return bmi?.bmi() ?: 0f
     }
-
 
     fun saveBmi()
     {
