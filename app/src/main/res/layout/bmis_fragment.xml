@@ -5,6 +5,9 @@
 
     <data>
         <variable
+            name="bmi"
+            type="com.inspirecoding.bmicalculator.model.BMI" />
+        <variable
             name="viewmodel"
             type="com.inspirecoding.bmicalculator.bmis.BmisViewModel" />
     </data>

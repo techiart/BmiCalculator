@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.inspirecoding.bmicalculator.EventObserver
 import com.inspirecoding.bmicalculator.MainActivity
+import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.databinding.BmisFragmentBinding
 
 class BmisFragment : Fragment()
@@ -44,6 +47,25 @@ class BmisFragment : Fragment()
 
         onFabClick()
         setupListAdapter()
+        setupDeleteBmiDialog()
+    }
+
+    private fun setupDeleteBmiDialog()
+    {
+        viewModel.deleteBmiDialog.observe(viewLifecycleOwner, EventObserver { _bmi ->
+            context?.let { _context ->
+                val dialog = BottomSheetDialog(_context)
+                dialog.setContentView(this.layoutInflater.inflate(R.layout.dialog_bottomsheet_deleteitem,null))
+                dialog.findViewById<AppCompatButton>(R.id.btn_cancel)?.setOnClickListener {
+                    dialog.dismiss()
+                }
+                dialog.findViewById<AppCompatButton>(R.id.btn_delete)?.setOnClickListener {
+                    viewModel.deleteBmi((_bmi))
+                    dialog.dismiss()
+                }
+                dialog.show()
+            }
+        })
     }
 
     private fun setupListAdapter()

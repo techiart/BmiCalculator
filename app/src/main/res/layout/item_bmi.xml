@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/item_bmi_margin"
+        android:onLongClick="@{(view) -> viewModel.openDeleteBmiDialog(view, bmi)}"
         android:background="@color/colorPrimary">
 
         <View

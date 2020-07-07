@@ -1,16 +1,20 @@
 package com.inspirecoding.bmicalculator.bmis
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
+import android.view.View
+import androidx.lifecycle.*
+import com.inspirecoding.bmicalculator.Event
 import com.inspirecoding.bmicalculator.data.BmiDatabase
 import com.inspirecoding.bmicalculator.data.BmiRepository
 import com.inspirecoding.bmicalculator.model.BMI
+import kotlinx.coroutines.launch
 
 class BmisViewModel(application: Application) : AndroidViewModel(application)
 {
     private val bmiRepository: BmiRepository
+
+    private val _deleteBmiDialog = MutableLiveData<Event<BMI>>()
+    val deleteBmiDialog: LiveData<Event<BMI>> = _deleteBmiDialog
 
     init
     {
@@ -19,4 +23,18 @@ class BmisViewModel(application: Application) : AndroidViewModel(application)
     }
 
     val items: LiveData<List<BMI>> = bmiRepository.allBmi
+
+    fun openDeleteBmiDialog(view: View, bmi: BMI): Boolean
+    {
+        _deleteBmiDialog.value = Event(bmi)
+
+        return false
+    }
+
+    fun deleteBmi(bmi: BMI)
+    {
+        viewModelScope.launch {
+            bmiRepository.deleteBmi(bmi)
+        }
+    }
 }
