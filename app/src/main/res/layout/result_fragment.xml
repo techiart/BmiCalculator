@@ -42,7 +42,8 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Normal" />
+                    tools:text="Normal"
+                    tools:textColor="@color/green"/>
 
                 <TextView
                     android:id="@+id/tv_result"

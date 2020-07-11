@@ -9,6 +9,17 @@ buildscript {
     ext.navigation_version = '2.3.0-rc01'
     ext.room_version = '2.2.5'
 
+    /** TESTING **/
+    ext.archTesting_version = '2.0.0'
+    ext.androidXTestCoreVersion = '1.2.0'
+    ext.androidXTestExtKotlinRunnerVersion = '1.1.1'
+    ext.archTestingVersion = '2.1.0'
+    ext.espresso_version = '3.2.0'
+    ext.fragment_version = '1.3.0-alpha06'
+    ext.hamcrest_version = '1.3'
+    ext.mockitoVersion = '2.21.0'
+    ext.navigation_version = '2.3.0'
+
     repositories {
         google()
         jcenter()

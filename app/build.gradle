@@ -77,4 +77,25 @@ dependencies {
 
     /** Koin **/
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+
+
+    /** TESTING **/
+    /** Koin **/
+    testImplementation "org.koin:koin-test:$koin_version"
+    /** Hamcrest **/
+    testImplementation "org.hamcrest:hamcrest-all:$hamcrest_version"
+    /** AndroidX test **/
+    testImplementation "androidx.arch.core:core-testing:$archTesting_version"
+    /** Testing Fragment **/
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
+    /** Espresso **/
+    // For recycler view actions
+    androidTestImplementation ("com.android.support.test.espresso:espresso-contrib:$espresso_version") {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+    /** Navigatin testing **/
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
 }
