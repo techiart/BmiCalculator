@@ -10,8 +10,13 @@ A sample application which was build up using the below JetPack libraries
     
 * LiveData
     
+## The tutorial
+The tutorial is available under link:
+[BMI Calculator tutorial](https://inspirecoding.app/bmi-calculator-introduction/)
 
 
+
+## The app
 The app contains unit and UI tests as well.
 
 ![SplashScreen](https://secureservercdn.net/160.153.137.218/yv6.cb0.myftpupload.com/wp-content/uploads/2020/06/splash_screen-576x1024.jpg)
