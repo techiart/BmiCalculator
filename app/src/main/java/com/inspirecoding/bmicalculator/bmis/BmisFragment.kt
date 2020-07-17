@@ -2,29 +2,43 @@ package com.inspirecoding.bmicalculator.bmis
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.inspirecoding.bmicalculator.EventObserver
 import com.inspirecoding.bmicalculator.MainActivity
 import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.databinding.BmisFragmentBinding
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class BmisFragment : Fragment()
 {
     private lateinit var binding: BmisFragmentBinding
-    private val viewModel by viewModels<BmisViewModel>()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: BmisViewModel
 
     override fun onStart()
     {
         super.onStart()
         (activity as MainActivity).supportActionBar?.show()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+
+        AndroidSupportInjection.inject(this)
+
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(BmisViewModel::class.java)
     }
 
     override fun onCreateView(

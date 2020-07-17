@@ -9,8 +9,10 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.inspirecoding.bmicalculator.databinding.ActivityMainBinding
+import dagger.android.AndroidInjection
+import dagger.android.support.DaggerAppCompatActivity
 
-class MainActivity : AppCompatActivity()
+class MainActivity : DaggerAppCompatActivity()
 {
     // 1
     private lateinit var binding: ActivityMainBinding
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity()
         binding = DataBindingUtil.setContentView(
             this, R.layout.activity_main
         )
+
+        AndroidInjection.inject(this)
 
         // 3
         val toolbar = findViewById<Toolbar>(R.id.toolbar)

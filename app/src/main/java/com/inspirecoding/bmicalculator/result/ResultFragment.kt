@@ -1,24 +1,37 @@
 package com.inspirecoding.bmicalculator.result
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.inspirecoding.bmicalculator.EventObserver
-import com.inspirecoding.bmicalculator.R
+import com.inspirecoding.bmicalculator.addnewbmi.AddNewBmiViewModel
 import com.inspirecoding.bmicalculator.databinding.ResultFragmentBinding
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class ResultFragment : Fragment()
 {
     private lateinit var binding: ResultFragmentBinding
     private val safeArgs: ResultFragmentArgs by navArgs()
-    private val viewModel by viewModels<ResultViewModel>()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel : ResultViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        AndroidSupportInjection.inject(this)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ResultViewModel::class.java)
+        Log.d("ResultFragment", "$viewModel")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -9,8 +9,9 @@ import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.model.BMI
 import com.inspirecoding.bmicalculator.utils.getNowInString
 import java.util.*
+import javax.inject.Inject
 
-class AddNewBmiViewModel : ViewModel()
+class AddNewBmiViewModel @Inject constructor () : ViewModel()
 {
     private val _snackbarText = MutableLiveData<Event<Int>>()
     val snackbarText: LiveData<Event<Int>> = _snackbarText

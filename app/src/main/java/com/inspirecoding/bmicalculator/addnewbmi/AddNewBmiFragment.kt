@@ -6,17 +6,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.inspirecoding.bmicalculator.EventObserver
 import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.databinding.AddNewBmiFragmentBinding
 import com.inspirecoding.bmicalculator.utils.setupSnackbar
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class AddNewBmiFragment : Fragment()
 {
     private lateinit var binding: AddNewBmiFragmentBinding
-    private val viewModel by viewModels<AddNewBmiViewModel>()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: AddNewBmiViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        AndroidSupportInjection.inject(this)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(AddNewBmiViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
