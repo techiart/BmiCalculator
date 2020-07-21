@@ -1,18 +1,19 @@
 package com.inspirecoding.bmicalculator.addnewbmi
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.inspirecoding.bmicalculator.EventObserver
-import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.databinding.AddNewBmiFragmentBinding
 import com.inspirecoding.bmicalculator.utils.setupSnackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddNewBmiFragment : Fragment()
 {
     private lateinit var binding: AddNewBmiFragmentBinding

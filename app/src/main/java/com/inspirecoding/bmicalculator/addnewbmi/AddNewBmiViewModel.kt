@@ -1,6 +1,7 @@
 package com.inspirecoding.bmicalculator.addnewbmi
 
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,8 +10,9 @@ import com.inspirecoding.bmicalculator.R
 import com.inspirecoding.bmicalculator.model.BMI
 import com.inspirecoding.bmicalculator.utils.getNowInString
 import java.util.*
+import javax.inject.Inject
 
-class AddNewBmiViewModel : ViewModel()
+class AddNewBmiViewModel @ViewModelInject constructor () : ViewModel()
 {
     private val _snackbarText = MutableLiveData<Event<Int>>()
     val snackbarText: LiveData<Event<Int>> = _snackbarText
